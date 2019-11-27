@@ -40,4 +40,20 @@
         DELETE FROM user where ID = #{id}
     </delete>
 
+
+    <select id="findByName" resultType="com.dgut.domain.User">
+        select * from user where username like #{username}
+    </select>
+
+
+    <!-- ${value}:直接把我们传过来的参数替换 -->
+    <select id="findByName2" resultType="com.dgut.domain.User">
+        select * from user where username like '%${value}%'
+    </select>
+
+    <select id="findTotal" resultType="int">
+        select count(*) from user
+    </select>
+
+
 </mapper>

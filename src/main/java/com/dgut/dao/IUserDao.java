@@ -42,4 +42,22 @@ public interface IUserDao {
      */
 
     int deleteUser(Integer id);
+
+
+    /**
+     * 根据名称模糊查询
+     */
+    List<User> findByName(String username);
+
+    /**
+     * 根据名称模糊查询
+     */
+    List<User> findByName2(String username);
+
+
+    /**
+     * 查询总记录条数
+     */
+    int findTotal();
+
 }
