@@ -1,17 +1,23 @@
 package com.dgut.dao;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 
 public class UserDao {
 
 
-    /*
+    /**
     * 查询指定用户名
-    * */
+    */
     public void findUsersBy(String username) throws SQLException {
         //1. 获取数据库链接
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mybatis", "root", "xieman123");
-        //2. 创建statement
+        //2. 创«建statement
         PreparedStatement statement = connection.prepareStatement("select * from user where username = ?");
         statement.setString(1,username);
         //3. 执行sql语句

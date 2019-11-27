@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--对mybatis进行环境配置-->
+    <environments default="mysql">
+        <!--1.给环境一个ID-->
+        <environment id="mysql">
+            <!--transactionManager:事务管理器
+                JDBC： 这个配置就是直接使用了 JDBC 的提交和回滚设置，它依赖于从数据源得到的连接来管理事务作用域。
+                MANAGED: 这个配置几乎没做什么。它从来不提交或回滚一个连接
+            -->
+            <transactionManager type="JDBC"/>
+            <!--dataSource数据源：链接数据库的信息
+                type：POOLED采用连接池技术
+                      UNPOOLED不采用连接池技术
+            -->
+            <dataSource type="POOLED">
+                <!-- 配置驱动信息 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <!-- 配置url -->
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <!-- 配置用户名密码 -->
+                <property name="username" value="root"/>
+                <property name="password" value="xieman123"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+
+        <!--mapper：定义了哪些接口需要mybatis帮我们实现-->
+        <mapper resource="IUserDao.xml"/>
+    </mappers>
+</configuration>
