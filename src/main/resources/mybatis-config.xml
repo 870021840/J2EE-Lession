@@ -34,6 +34,7 @@
         <!--mapper：定义了哪些接口需要mybatis帮我们实现-->
         <!--resource:用于xml配置方式 -->
         <mapper resource="com/dgut/dao/IUserDao.xml"/>
+        <mapper resource="com/dgut/dao/IUser2Dao.xml"/>
         <!-- class：用于注解的配置方式-->
         <mapper class="com.dgut.dao.IAccountDao"/>
 

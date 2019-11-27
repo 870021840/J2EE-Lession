@@ -1,9 +1,11 @@
 package com.dgut;
 
 import com.dgut.dao.IAccountDao;
+import com.dgut.dao.IUser2Dao;
 import com.dgut.dao.IUserDao;
 import com.dgut.domain.Account;
 import com.dgut.domain.User;
+import com.dgut.domain.User2;
 import com.dgut.queryVO.UserVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -161,6 +163,15 @@ public class mybatisTest {
         IUserDao userDao = session.getMapper(IUserDao.class);
         // 4.查找所有用户
         List<User> users = userDao.findByNameAndSex2(vo);
+        System.out.println(users);
+    }
+
+    @Test
+    public void findAllUser2() throws IOException {
+        // 3. mybatis实现接口
+        IUser2Dao userDao = session.getMapper(IUser2Dao.class);
+        // 4.查找所有用户
+        List<User2> users = userDao.findAllUser2();
         System.out.println(users);
     }
 }

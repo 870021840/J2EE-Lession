@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间表示对应的java接口 -->
+<mapper namespace="com.dgut.dao.IUser2Dao">
+
+    <!--resultMap声明一个映射关系
+        id：映射的名称
+       type：希望映射完封装成什么类型
+        -->
+    <resultMap id="wusuowei" type="com.dgut.domain.User2">
+        <!--id做主键映射，result做普通属性映射
+        column：对应是数据库的列字段，property对应的是java实体类的属性 -->
+        <id column="id"  property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_birthday" property="birthday"/>
+        <result column="user_sex" property="sex"/>
+        <result column="user_address" property="address"/>
+    </resultMap>
+
+    <!--如果数据库字段与属性不一致的情况下，用resultMap进行封装-->
+    <select id="findAllUser2" resultMap="wusuowei">
+        select * from user2
+    </select>
+</mapper>
