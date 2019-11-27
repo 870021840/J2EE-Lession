@@ -22,7 +22,7 @@
                 <!-- 配置驱动信息 -->
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <!-- 配置url -->
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"/>
                 <!-- 配置用户名密码 -->
                 <property name="username" value="root"/>
                 <property name="password" value="xieman123"/>

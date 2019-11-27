@@ -11,4 +11,33 @@
         select * from user
   </select>
 
+
+    <!--sql中的？用#{}表示 -->
+    <select id="findUserByID" resultType="com.dgut.domain.User">
+        select * from user where id = #{id}
+
+    </select>
+
+
+    <!--#{username}表示调用parameterType（User）里面的getUsername()-->
+    <!--    <insert id="inserUser">-->
+    <!--        insert into user(username,address) VALUES(#{username},#{address})-->
+    <!--        <selectKey keyColumn="id" keyProperty="id" resultType="int">-->
+    <!--            select LAST_INSERT_ID()-->
+    <!--        </selectKey>-->
+    <!--    </insert>-->
+    <insert id="inserUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+             insert into user(username,address) VALUES(#{username},#{address})
+   </insert>
+
+
+
+    <update id="updateUser" parameterType="com.dgut.domain.User">
+        update user set username=#{username},address=#{address} where id = #{id}
+    </update>
+
+    <delete id="deleteUser">
+        DELETE FROM user where ID = #{id}
+    </delete>
+
 </mapper>

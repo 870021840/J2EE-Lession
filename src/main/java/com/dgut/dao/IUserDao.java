@@ -11,4 +11,35 @@ public interface IUserDao {
      * @throws IOException
      */
     public List<User> findAllUser() throws IOException;
+
+    /**
+     * 根据用户id查找用户
+     * @param id
+     * @return
+     */
+    public  User findUserByID(Integer id);
+
+
+    /**
+     * 插入用户
+     * @param user 用户
+     * @return 影响行数
+     */
+    public int inserUser(User user);
+
+
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
+    int updateUser(User user);
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+
+    int deleteUser(Integer id);
 }
