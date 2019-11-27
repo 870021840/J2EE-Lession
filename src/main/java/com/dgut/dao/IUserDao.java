@@ -1,6 +1,8 @@
 package com.dgut.dao;
 
 import com.dgut.domain.User;
+import com.dgut.queryVO.UserVo;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -59,5 +61,19 @@ public interface IUserDao {
      * 查询总记录条数
      */
     int findTotal();
+
+
+    /**
+     * 根据用户名、性别查询用户信息
+     */
+
+    List<User> findByNameAndSex(String username,String sex);
+
+
+    /**
+     * 根据用户名、性别查询用户信息
+     */
+
+    List<User> findByNameAndSex2(UserVo vo);
 
 }

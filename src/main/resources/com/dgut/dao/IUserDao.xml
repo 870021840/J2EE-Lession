@@ -41,7 +41,7 @@
     </delete>
 
 
-    <select id="findByName" resultType="com.dgut.domain.User">
+    <select id="findByName" parameterType="string" resultType="com.dgut.domain.User">
         select * from user where username like #{username}
     </select>
 
@@ -55,5 +55,13 @@
         select count(*) from user
     </select>
 
+    <select id="findByNameAndSex" resultType="com.dgut.domain.User">
+        select * from user where username like #{param1} and sex = #{arg1}
+    </select>
 
+
+
+    <select id="findByNameAndSex2" parameterType="com.dgut.queryVO.UserVo" resultType="com.dgut.domain.User">
+        select * from user where username like #{username} and sex = #{sex}
+    </select>
 </mapper>

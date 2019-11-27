@@ -4,6 +4,7 @@ import com.dgut.dao.IAccountDao;
 import com.dgut.dao.IUserDao;
 import com.dgut.domain.Account;
 import com.dgut.domain.User;
+import com.dgut.queryVO.UserVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -140,6 +141,27 @@ public class mybatisTest {
         // 4.查找所有用户
         int total = userDao.findTotal();
         System.out.println(total);
+    }
+
+    @Test
+    public void findByNameAndSex() throws IOException {
+        // 3. mybatis实现接口
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        // 4.查找所有用户
+        List<User> users = userDao.findByNameAndSex("%yy%", "男");
+        System.out.println(users);
+    }
+
+    @Test
+    public void findByNameAndSex2() throws IOException {
+        UserVo vo = new UserVo();
+        vo.setUsername("%yy%");
+        vo.setSex("男");
+        // 3. mybatis实现接口
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        // 4.查找所有用户
+        List<User> users = userDao.findByNameAndSex2(vo);
+        System.out.println(users);
     }
 }
 
