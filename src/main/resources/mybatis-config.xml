@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+
     <!--对mybatis进行环境配置-->
     <environments default="mysql">
         <!--1.给环境一个ID-->
@@ -30,6 +32,10 @@
     <mappers>
 
         <!--mapper：定义了哪些接口需要mybatis帮我们实现-->
-        <mapper resource="IUserDao.xml"/>
+        <!--resource:用于xml配置方式 -->
+        <mapper resource="com/dgut/dao/IUserDao.xml"/>
+        <!-- class：用于注解的配置方式-->
+        <mapper class="com.dgut.dao.IAccountDao"/>
+
     </mappers>
 </configuration>

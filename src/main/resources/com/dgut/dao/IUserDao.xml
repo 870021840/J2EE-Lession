@@ -10,4 +10,5 @@
     <select id="findAllUser" resultType="com.dgut.domain.User">
         select * from user
   </select>
+
 </mapper>
