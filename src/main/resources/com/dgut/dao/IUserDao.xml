@@ -4,16 +4,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 命名空间表示对应的java接口 -->
 <mapper namespace="com.dgut.dao.IUserDao">
-    
+
     <sql id="defaultSql">
         select * from user
     </sql>
+
+    <resultMap id="user_account_Map" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="address" property="address"/>
+        <!--1对多的映射
+        ofType: 集合里面放的数据类型-->
+        <collection property="accounts" ofType="com.dgut.domain.Account">
+            <id column="account_id" property="id"/>
+            <result column="money" property="money"/>
+        </collection>
+    </resultMap>
+
     <!--select：查询
            id：对应接口的方法名
            resultType：返回的结合里面包含的数据类型-->
-    <select id="findAllUser" resultType="user">
-        <include refid="defaultSql"></include>
-  </select>
+    <select id="findAllUser" resultMap="user_account_Map">
+        <!-- <include refid="defaultSql"></include>-->
+        SELECT user.*,account.ID AS account_id,account.MONEY as MONEY FROM `user` LEFT JOIN account ON `user`.id =
+        account.UID
+    </select>
 
 
     <!--sql中的？用#{}表示 -->
@@ -99,5 +114,19 @@
                 </foreach>
             </if>
         </where>
+    </select>
+
+    <resultMap id="user_role_Map" type="user">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"/>
+        <result column="address" property="address"/>
+        <collection property="roles" ofType="role">
+            <result column="role_name" property="roleName"/>
+            <result column="role_desc" property="roleDesc"/>
+        </collection>
+    </resultMap>
+
+    <select id="findUsersWithRoles"  resultMap="user_role_Map">
+        select * FROM `user` LEFT JOIN user_role ON `user`.id = user_role.UID LEFT JOIN role on RID = role.ID
     </select>
 </mapper>

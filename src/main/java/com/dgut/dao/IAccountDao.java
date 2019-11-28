@@ -11,7 +11,7 @@ public interface IAccountDao {
     /**
      * 查找所有账户信息
      */
-    @Select(value = "select * from account")
+//    @Select(value = "select * from account")
     public List<Account> findAllAccount();
 
 

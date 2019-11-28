@@ -91,4 +91,11 @@ public interface IUserDao {
      */
     public List<User> findByQvo(QueryVO vo);
 
+
+    /**
+     * 查询所有的用户以及他们关联的角色
+     * @return
+     */
+    public  List<User> findUsersWithRoles();
+
 }

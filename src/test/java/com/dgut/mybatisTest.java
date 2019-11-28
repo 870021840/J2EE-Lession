@@ -48,8 +48,10 @@ public class mybatisTest {
         IUserDao userDao = session.getMapper(IUserDao.class);
         // 4.查找所有用户
         List<User> allUser = userDao.findAllUser();
+        for (User user : allUser){
+            System.out.println(user);
+        }
 
-        System.out.println(allUser);
 
     }
 
@@ -204,6 +206,18 @@ public class mybatisTest {
         IUserDao userDao = session.getMapper(IUserDao.class);
         List<User> users = userDao.findByQvo(vo);
         System.out.println(users);
+    }
+
+
+    @Test
+    public void findUsersWithRoles() throws IOException {
+        // 3. mybatis实现接口
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        List<User> users = userDao.findUsersWithRoles();
+        for (User user: users){
+            System.out.println(user);
+        }
+
     }
 }
 

@@ -3,8 +3,10 @@ package com.dgut.domain;
 public class Account {
 
     private Integer id;
-    private Integer uid;
+//    private Integer uid;
+    private User user;
     private Float money;
+
 
     public Integer getId() {
         return id;
@@ -14,13 +16,21 @@ public class Account {
         this.id = id;
     }
 
-    public Integer getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    //    public Integer getUid() {
+//        return uid;
+//    }
+//
+//    public void setUid(Integer uid) {
+//        this.uid = uid;
+//    }
 
     public Float getMoney() {
         return money;
@@ -34,7 +44,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", uid=" + uid +
+                ", user=" + user +
                 ", money=" + money +
                 '}';
     }
