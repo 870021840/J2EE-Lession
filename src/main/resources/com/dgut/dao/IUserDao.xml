@@ -4,11 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 命名空间表示对应的java接口 -->
 <mapper namespace="com.dgut.dao.IUserDao">
+    
+    <sql id="defaultSql">
+        select * from user
+    </sql>
     <!--select：查询
            id：对应接口的方法名
            resultType：返回的结合里面包含的数据类型-->
     <select id="findAllUser" resultType="user">
-        select * from user
+        <include refid="defaultSql"></include>
   </select>
 
 
