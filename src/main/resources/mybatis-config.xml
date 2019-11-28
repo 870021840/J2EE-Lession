@@ -4,6 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <properties resource="jdbc.properties"></properties>
+    
+    <settings>
+        <setting name="useGeneratedKeys" value="true"/>
+    </settings>
+
+    <!--别名配置-->
+    <typeAliases>
+<!--        <typeAlias type="com.dgut.domain.User" alias="user"/>-->
+<!--        <typeAlias type="com.dgut.domain.Account" alias="account"/>-->
+        <package name="com.dgut.domain"/>
+    </typeAliases>
 
     <!--对mybatis进行环境配置-->
     <environments default="mysql">
@@ -20,12 +32,12 @@
             -->
             <dataSource type="POOLED">
                 <!-- 配置驱动信息 -->
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="driver" value="${jdbc.driver}"/>
                 <!-- 配置url -->
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?characterEncoding=UTF-8"/>
+                <property name="url" value="${jdbc.url}"/>
                 <!-- 配置用户名密码 -->
-                <property name="username" value="root"/>
-                <property name="password" value="xieman123"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
@@ -33,10 +45,12 @@
 
         <!--mapper：定义了哪些接口需要mybatis帮我们实现-->
         <!--resource:用于xml配置方式 -->
-        <mapper resource="com/dgut/dao/IUserDao.xml"/>
-        <mapper resource="com/dgut/dao/IUser2Dao.xml"/>
+<!--        <mapper resource="com/dgut/dao/IUserDao.xml"/>-->
+<!--        <mapper resource="com/dgut/dao/IUser2Dao.xml"/>-->
         <!-- class：用于注解的配置方式-->
-        <mapper class="com.dgut.dao.IAccountDao"/>
+<!--        <mapper class="com.dgut.dao.IAccountDao"/>-->
+
+        <package name="com.dgut.dao"/>
 
     </mappers>
 </configuration>

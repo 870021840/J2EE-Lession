@@ -7,7 +7,7 @@
     <!--select：查询
            id：对应接口的方法名
            resultType：返回的结合里面包含的数据类型-->
-    <select id="findAllUser" resultType="com.dgut.domain.User">
+    <select id="findAllUser" resultType="user">
         select * from user
   </select>
 
@@ -26,7 +26,7 @@
     <!--            select LAST_INSERT_ID()-->
     <!--        </selectKey>-->
     <!--    </insert>-->
-    <insert id="inserUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    <insert id="inserUser" keyColumn="id" keyProperty="id" useGeneratedKeys="false">
              insert into user(username,address) VALUES(#{username},#{address})
    </insert>
 
