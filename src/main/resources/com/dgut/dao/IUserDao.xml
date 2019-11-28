@@ -31,7 +31,6 @@
    </insert>
 
 
-
     <update id="updateUser" parameterType="com.dgut.domain.User">
         update user set username=#{username},address=#{address} where id = #{id}
     </update>
@@ -60,8 +59,41 @@
     </select>
 
 
-
     <select id="findByNameAndSex2" parameterType="com.dgut.queryVO.UserVo" resultType="com.dgut.domain.User">
         select * from user where username like #{username} and sex = #{sex}
+    </select>
+
+
+    <select id="findByUser" parameterType="user" resultType="user">
+        select * from user
+        <where>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+
+            <if test="username!=null">
+                and username=#{username}
+            </if>
+        </where>
+    </select>
+
+    <!-- id IN (45,46,48)-->
+    <!--id IN (-->
+    <!--45,46,48-->
+    <!--)-->
+    <select id="findByQvo" resultType="user">
+        SELECT * FROM USER
+        <where>
+            <if test="username!=null">
+                and username LIKE #{username}
+            </if>
+
+            <if test="ids!=null and ids.size()>0">
+                AND
+                <foreach collection="ids" item="abc" open=" id IN (" close=")" separator=",">
+                    #{abc}
+                </foreach>
+            </if>
+        </where>
     </select>
 </mapper>

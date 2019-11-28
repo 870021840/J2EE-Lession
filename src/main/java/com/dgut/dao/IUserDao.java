@@ -1,6 +1,7 @@
 package com.dgut.dao;
 
 import com.dgut.domain.User;
+import com.dgut.queryVO.QueryVO;
 import com.dgut.queryVO.UserVo;
 
 import java.io.IOException;
@@ -75,5 +76,19 @@ public interface IUserDao {
      */
 
     List<User> findByNameAndSex2(UserVo vo);
+
+
+    /**
+     * 多条件查询 id如果不为空时可以根据id查询，如果username不同空时还要加入username作为条件。
+     */
+    public List<User> findByUser(User user);
+
+
+
+    /**
+     * 多条件查询
+     * SELECT * FROM USERS WHERE username LIKE '%张%' AND id IN (10,89,16)
+     */
+    public List<User> findByQvo(QueryVO vo);
 
 }

@@ -6,6 +6,7 @@ import com.dgut.dao.IUserDao;
 import com.dgut.domain.Account;
 import com.dgut.domain.User;
 import com.dgut.domain.User2;
+import com.dgut.queryVO.QueryVO;
 import com.dgut.queryVO.UserVo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -18,6 +19,7 @@ import sun.nio.cs.US_ASCII;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class mybatisTest {
@@ -172,6 +174,35 @@ public class mybatisTest {
         IUser2Dao userDao = session.getMapper(IUser2Dao.class);
         // 4.查找所有用户
         List<User2> users = userDao.findAllUser2();
+        System.out.println(users);
+    }
+
+    @Test
+    public void findByUser() throws IOException {
+        User user =new User();
+        user.setId(41);
+//        user.setUsername("yyy");
+        // 3. mybatis实现接口
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        List<User> users = userDao.findByUser(user);
+        System.out.println(users);
+    }
+
+    @Test
+    public void findByQvo() throws IOException {
+        QueryVO vo = new QueryVO();
+        vo.setUsername("%王%");
+//        List list = new ArrayList();
+//        list.add(45);
+//        list.add(46);
+//        list.add(48);
+//        vo.setIds(list);
+        
+        
+//        user.setUsername("yyy");
+        // 3. mybatis实现接口
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        List<User> users = userDao.findByQvo(vo);
         System.out.println(users);
     }
 }
