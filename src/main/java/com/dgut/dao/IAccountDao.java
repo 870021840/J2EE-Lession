@@ -15,4 +15,9 @@ public interface IAccountDao {
     public List<Account> findAllAccount();
 
 
+    //    查询账户信息同时查询用户信息
+    public List<Account> findAll();
+
+    public List<Account> findByUid(String uid);
+
 }

@@ -217,7 +217,34 @@ public class mybatisTest {
         for (User user: users){
             System.out.println(user);
         }
-
     }
+
+    @Test
+    public void findAllAccount() throws IOException {
+        // 3. mybatis实现接口
+        IAccountDao accountDao = session.getMapper(IAccountDao.class);
+        List<Account> all = accountDao.findAll();
+
+        User user = all.get(0).getUser();
+        System.out.println(user);
+
+//        for (Account account:all){
+//            System.out.println(account.getUser().getUsername());
+//        }
+    }
+
+    @Test
+    public void findUsersWithAccounts2(){
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        List<User> usersWithAccounts2 = userDao.findUsersWithAccounts2();
+
+        //需求:只需要显示第一个用户信息的账户信息
+        List<Account> accounts = usersWithAccounts2.get(0).getAccounts();
+        System.out.println(accounts);
+
+        List<Account> accounts2 = usersWithAccounts2.get(1).getAccounts();
+        System.out.println(accounts2);
+    }
+    
 }
 

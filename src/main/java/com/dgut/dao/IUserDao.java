@@ -98,4 +98,12 @@ public interface IUserDao {
      */
     public  List<User> findUsersWithRoles();
 
+
+    /**
+     * 查询所有用户，同时获取出每个用户下的所有账户信息(延迟加载)
+     */
+    public List<User> findUsersWithAccounts2();
+
+
+
 }

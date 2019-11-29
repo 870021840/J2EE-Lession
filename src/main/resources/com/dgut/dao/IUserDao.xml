@@ -129,4 +129,18 @@
     <select id="findUsersWithRoles"  resultMap="user_role_Map">
         select * FROM `user` LEFT JOIN user_role ON `user`.id = user_role.UID LEFT JOIN role on RID = role.ID
     </select>
+
+
+    <resultMap id="users_account_Map" type="user">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"/>
+        <result column="address" property="address"/>
+        <collection property="accounts" select="com.dgut.dao.IAccountDao.findByUid" column="id">
+
+        </collection>
+    </resultMap>
+
+    <select id="findUsersWithAccounts2" resultMap="users_account_Map">
+        select * from user
+    </select>
 </mapper>

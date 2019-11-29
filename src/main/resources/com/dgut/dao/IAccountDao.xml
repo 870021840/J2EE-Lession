@@ -19,4 +19,26 @@
     <select id="findAllAccount" resultMap="accountMap" >
         select * from account,`user` WHERE account.UID = `user`.id
     </select>
+
+
+    <resultMap id="accountMap2" type="account">
+        <id column="id" property="id"/>
+        <result column="money" property="money" />
+        <!-- association:
+                select:表示执行一条sql语句
+                column：表示selct里面的参数
+        -->
+        <association property="user" select="com.dgut.dao.IUserDao.findUserByID" column="uid">
+
+        </association>
+    </resultMap>
+
+    <select id="findAll"  resultMap="accountMap2">
+        select  * from account
+    </select>
+
+
+    <select id="findByUid" resultType="account">
+        select  * from account where uid = #{ID}
+    </select>
 </mapper>
