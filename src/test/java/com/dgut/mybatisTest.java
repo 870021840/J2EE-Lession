@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.validator.PublicClassValidator;
 import sun.nio.cs.US_ASCII;
 
 import java.io.IOException;
@@ -283,6 +284,43 @@ public class mybatisTest {
         for (User2 user: list){
 //            System.out.println(user.getAccounts());
         }
+    }
+
+    @Test
+    public void insertUser(){
+        User user = new User();
+        user.setUsername("aaa");
+        user.setAddress("bbb");
+        IUser2Dao userDao = session.getMapper(IUser2Dao.class);
+        userDao.insertUser(user);
+        System.out.println(user);
+    }
+
+    @Test
+    public void findID41User(){
+        IUser2Dao mapper = session.getMapper(IUser2Dao.class);
+        User user = mapper.findID41User();
+        System.out.println(user);
+        session.close();
+
+        SqlSession session1 = sqlSessionFactory.openSession();
+        IUser2Dao user2Dao = session1.getMapper(IUser2Dao.class);
+        User user1 = user2Dao.findID41User();
+        System.out.println(user1);
+    }
+
+    @Test
+    public void findAllUser(){
+        IUser2Dao mapper = session.getMapper(IUser2Dao.class);
+        List<User> allUser = mapper.findAllUser();
+        System.out.println(allUser);
+    }
+
+    @Test
+    public void findSQL(){
+        IUser2Dao mapper = session.getMapper(IUser2Dao.class);
+        List<User> users = mapper.findSQL("yyy", "aa");
+        System.out.println(users);
     }
 }
 
