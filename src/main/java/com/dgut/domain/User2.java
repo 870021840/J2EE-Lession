@@ -1,21 +1,24 @@
 package com.dgut.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class User2 {
-    private Integer id;
+    private Integer uid;
     private String userName;
     private Date birthday;
     private String sex;
     private String address;
 
+    private List<Account> accounts;
 
-    public Integer getId() {
-        return id;
+
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getUserName() {
@@ -50,14 +53,23 @@ public class User2 {
         this.address = address;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public String toString() {
         return "User2{" +
-                "id=" + id +
+                "uid=" + uid +
                 ", userName='" + userName + '\'' +
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }

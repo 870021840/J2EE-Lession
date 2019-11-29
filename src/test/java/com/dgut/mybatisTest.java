@@ -24,13 +24,14 @@ import java.util.List;
 
 public class mybatisTest {
 
+    SqlSessionFactory sqlSessionFactory;
     SqlSession session;
     InputStream inputStream;
     @Before
     public void init() throws IOException {
         inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 //        // 1.获取sqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         // 2.打开一个session（链接）
         session = sqlSessionFactory.openSession();
     }
@@ -245,6 +246,43 @@ public class mybatisTest {
         List<Account> accounts2 = usersWithAccounts2.get(1).getAccounts();
         System.out.println(accounts2);
     }
-    
+
+
+    @Test
+    public void testCache(){
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        User user = userDao.findUserByID(41);
+        System.out.println(user);
+
+        //做其他的操作
+        User user2 = userDao.findUserByID(41);
+        System.out.println(user == user2);
+
+    }
+
+    @Test
+    public void testCache2(){
+        IUserDao userDao = session.getMapper(IUserDao.class);
+        User user = userDao.findUserByID(41);
+        System.out.println(user);
+        session.close();
+
+        session = sqlSessionFactory.openSession();
+        userDao = session.getMapper(IUserDao.class);
+
+        //做其他的操作
+        User user2 = userDao.findUserByID(41);
+        System.out.println(user2);
+        System.out.println(user == user2);
+    }
+
+    @Test
+    public void testAnno() throws IOException {
+        IUser2Dao userDao = session.getMapper(IUser2Dao.class);
+        List<User2> list = userDao.findAllUser3();
+        for (User2 user: list){
+//            System.out.println(user.getAccounts());
+        }
+    }
 }
 

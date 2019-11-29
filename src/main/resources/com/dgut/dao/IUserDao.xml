@@ -5,6 +5,8 @@
 <!-- 命名空间表示对应的java接口 -->
 <mapper namespace="com.dgut.dao.IUserDao">
 
+    <!-- 开启二级缓存的支持 -->
+    <cache/>
     <sql id="defaultSql">
         select * from user
     </sql>
@@ -135,7 +137,7 @@
         <id column="id" property="id"></id>
         <result column="username" property="username"/>
         <result column="address" property="address"/>
-        <collection property="accounts" select="com.dgut.dao.IAccountDao.findByUid" column="id">
+        <collection property="accounts" select="com.dgut.dao.IAccountDao.findByUid" column="id" fetchType="lazy">
 
         </collection>
     </resultMap>

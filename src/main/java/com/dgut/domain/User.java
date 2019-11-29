@@ -1,8 +1,9 @@
 package com.dgut.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
 
     Integer id;
     String username;
