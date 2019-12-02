@@ -10,13 +10,13 @@
 
 
     <!--  map: (accountService: new AccountServiceImpl())-->
-    <bean id="accountService"
-          class="com.dgut.service.impl.AccountServiceImpl"
-          scope="prototype"
-          init-method="my_init"
-          destroy-method="my_destroy"
-    >
-    </bean>
+<!--    <bean id="accountService"-->
+<!--          class="com.dgut.service.impl.AccountServiceImpl"-->
+<!--          scope="prototype"-->
+<!--          init-method="my_init"-->
+<!--          destroy-method="my_destroy"-->
+<!--    >-->
+<!--    </bean>-->
 
     <!-- StaticFactory.createAccountService() -->
     <bean id="accountService2"
@@ -30,4 +30,24 @@
     <bean id="accountService3"
           factory-bean="factory"
           factory-method="createAccountService"/>
+
+
+    <!-- new AccountServiceImpl()-->
+    <bean id="accountService01" class="com.dgut.service.impl.AccountServiceImpl"/>
+
+    <!-- new AccountServiceImpl( new AccountDaoImpl())-->
+    <bean id="accountService02" class="com.dgut.service.impl.AccountServiceImpl">
+        <constructor-arg index="0" ref="accountDao"/>
+    </bean>
+
+    <bean id="num" class = "java.lang.Integer" factory-method="parseInt">
+        <constructor-arg index="0" value="123" />
+    </bean>
+
+    <!-- new string("123")-->
+    <bean id="str" class="java.lang.String">
+        <constructor-arg index="0" value="dgut123"/>
+    </bean>
+
+    <bean id="length" factory-bean="str" factory-method="length"/>
 </beans>

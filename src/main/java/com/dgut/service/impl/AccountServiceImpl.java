@@ -9,6 +9,18 @@ public class AccountServiceImpl implements IAccountService {
 
     private IAccountDao accountDao;
 
+    /*
+      account = new AccountDaoImpl();
+    * new AccountServiceImpl(account)
+    * */
+
+    public AccountServiceImpl() {
+    }
+
+    public AccountServiceImpl(IAccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
     public void my_init(){
         System.out.println("init");
     }

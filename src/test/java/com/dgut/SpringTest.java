@@ -4,6 +4,7 @@ import com.dgut.dao.IAccountDao;
 import com.dgut.domain.Account;
 import com.dgut.service.IAccountService;
 import com.dgut.service.impl.AccountServiceImpl;
+import com.sun.prism.shader.Solid_RadialGradient_REFLECT_AlphaTest_Loader;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -20,18 +21,33 @@ public class SpringTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
         IAccountDao accountDao = (IAccountDao) applicationContext.getBean("accountDao");
         System.out.println(accountDao);
-        IAccountService accountService = (IAccountService) applicationContext.getBean("accountService");
-
-        IAccountService accountService2 = (IAccountService) applicationContext.getBean("accountService");
-        System.out.println(accountService+" "+accountService2);
+//        IAccountService accountService = (IAccountService) applicationContext.getBean("accountService");
+//
+//        IAccountService accountService2 = (IAccountService) applicationContext.getBean("accountService");
+//        System.out.println(accountService+" "+accountService2);
 
 
         IAccountService accountService3 = (IAccountService) applicationContext.getBean("accountService3");
         System.out.println(accountService3);
 
+        IAccountService accountService02 = (IAccountService) applicationContext.getBean("accountService02");
+
+        accountService02.trans(a1,a2,400);
 
 
+        Object num = applicationContext.getBean("num");
+        System.out.println(num);
+
+        /*
+        *
+        * */
+//        String str = new String("123");
+//        int length = str.length();
+//        int num = Integer.parseInt("123");
 //        accountService.trans(a1,a2,400);
 //        System.out.println(applicationContext);
+
+        Object length = applicationContext.getBean("length");
+        System.out.println(length);
     }
 }
