@@ -12,8 +12,8 @@ public class SpringTest {
 
     @Test
     public void testTrans() throws Exception {
-//        Account a1 = new Account("xiaoming",1000f);
-//        Account a2 = new Account("xiaohong",1000f);
+        Account a1 = new Account("xiaoming",1000f);
+        Account a2 = new Account("xiaohong",1000f);
 //        IAccountService accountService = new AccountServiceImpl();
 //        accountService.trans(a1,a2,200);
 
@@ -21,7 +21,17 @@ public class SpringTest {
         IAccountDao accountDao = (IAccountDao) applicationContext.getBean("accountDao");
         System.out.println(accountDao);
         IAccountService accountService = (IAccountService) applicationContext.getBean("accountService");
-        System.out.println(accountService);
+
+        IAccountService accountService2 = (IAccountService) applicationContext.getBean("accountService");
+        System.out.println(accountService+" "+accountService2);
+
+
+        IAccountService accountService3 = (IAccountService) applicationContext.getBean("accountService3");
+        System.out.println(accountService3);
+
+
+
+//        accountService.trans(a1,a2,400);
 //        System.out.println(applicationContext);
     }
 }
