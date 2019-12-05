@@ -21,6 +21,10 @@ public class AccountServiceImpl implements IAccountService {
         this.accountDao = accountDao;
     }
 
+    public void setAccountDao(IAccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
     public void my_init(){
         System.out.println("init");
     }

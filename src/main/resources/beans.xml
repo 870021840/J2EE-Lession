@@ -40,6 +40,18 @@
         <constructor-arg index="0" ref="accountDao"/>
     </bean>
 
+
+    <!--
+    iaccountDao dao = new IaccountDao();
+    accountService03 = new AccountServiceImpl()
+    accountService03.setAccountDao(dao);
+
+    IoC :依赖注入；控制反转；
+    -->
+    <bean id="accountService03" class="com.dgut.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao" />
+    </bean>
+
     <bean id="num" class = "java.lang.Integer" factory-method="parseInt">
         <constructor-arg index="0" value="123" />
     </bean>
@@ -50,4 +62,18 @@
     </bean>
 
     <bean id="length" factory-bean="str" factory-method="length"/>
+
+
+    <bean id="user" class="com.dgut.domain.User">
+        <constructor-arg name="username" value="xieman"/>
+        <constructor-arg name="age" value="12"/>
+    </bean>
+
+    <!-- user2 = new User();
+        user2.setUsername("dgut");
+    -->
+    <bean id="user2" class="com.dgut.domain.User">
+        <!--property表示调用他的set方法赋值-->
+        <property name="username" value="dgut"/>
+    </bean>
 </beans>

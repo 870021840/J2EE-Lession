@@ -2,9 +2,11 @@ package com.dgut;
 
 import com.dgut.dao.IAccountDao;
 import com.dgut.domain.Account;
+import com.dgut.domain.User;
 import com.dgut.service.IAccountService;
 import com.dgut.service.impl.AccountServiceImpl;
 import com.sun.prism.shader.Solid_RadialGradient_REFLECT_AlphaTest_Loader;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -49,5 +51,14 @@ public class SpringTest {
 
         Object length = applicationContext.getBean("length");
         System.out.println(length);
+
+
+        /* new user();*/
+        User user = (User) applicationContext.getBean("user");
+        System.out.println("user"+user);
+
+        User use2 = (User) applicationContext.getBean("user2");
+        System.out.println("user"+use2);
+
     }
 }
